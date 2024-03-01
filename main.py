@@ -4,6 +4,7 @@
 
 from encryption import *
 from Crypto.Random import get_random_bytes
+from PIL import Image
 
 key_des = b'LlaveDES'
 key_3des = b'LlaveTripleDES12'

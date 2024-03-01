@@ -4,7 +4,6 @@
 
 from Crypto.Util.Padding import pad
 from Crypto.Cipher import DES3
-from PIL import Image
 from Crypto.Cipher import DES, AES
 
 def encrypt_des(key, data):
