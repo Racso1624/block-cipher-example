@@ -1,32 +1,32 @@
+# Oscar Fernando López Barrios
+# Carné 20679
+# block-cipher-example
+
 from Crypto.Util.Padding import pad
-from Crypto.Util.Padding import unpad
 from Crypto.Cipher import DES3
 from PIL import Image
 from Crypto.Cipher import DES, AES
 
-def encrypt_des(key, plaintext):
+def encrypt_des(key, data):
     cipher = DES.new(key, DES.MODE_ECB)
-    return cipher.encrypt(pad(plaintext.encode(), DES.block_size))
+    result = cipher.encrypt(pad(data.encode(), DES.block_size))
+    return result
 
-def encrypt_3des(key, plaintext):
+def encrypt_3des(key, data):
     cipher = DES3.new(key, DES3.MODE_ECB)
-    return cipher.encrypt(pad(plaintext.encode(), DES3.block_size))
+    return cipher.encrypt(pad(data.encode(), DES3.block_size))
 
-def encrypt_aes(key, plaintext):
+def encrypt_aes(key, data):
     cipher = AES.new(key, AES.MODE_ECB)
-    return cipher.encrypt(pad(plaintext.encode(), AES.block_size))
+    result = cipher.encrypt(pad(data.encode(), AES.block_size))
+    return result
 
-def encrypt_image_cbc(key, image_path):
+def encrypt_cbc(key, data):
     cipher = AES.new(key, AES.MODE_CBC)
-    iv = cipher.iv
-    image = Image.open(image_path)
-    image_data = image.tobytes()
-    encrypted_data = cipher.encrypt(pad(image_data, AES.block_size))
-    return encrypted_data, iv
+    result = cipher.encrypt(pad(data, AES.block_size))
+    return result
 
-def encrypt_image_ecb(key, image_path):
+def encrypt_ecb(key, data):
     cipher = AES.new(key, AES.MODE_ECB)
-    image = Image.open(image_path)
-    image_data = image.tobytes()
-    encrypted_data = cipher.encrypt(pad(image_data, AES.block_size))
-    return encrypted_data
+    result = cipher.encrypt(pad(data, AES.block_size))
+    return result
